@@ -1,0 +1,14 @@
+.c-hover-cube {
+    height: 5rem;
+    width: 5rem;
+    background-color: red;
+    transition: .2s ease;
+}
+
+.c-hover-cube.hovering {
+    background-color: green;
+}
+
+.c-hover-cube.clicked {
+    background-color: blue;
+}

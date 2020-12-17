@@ -1,0 +1,12 @@
+.c-person {
+    border: 1px solid black;
+    padding: .5rem;
+    display: inline-block;
+    margin: .25rem;
+}
+
+.c-person span {
+    border: 1px solid red;
+    padding: .5rem;
+    display: inline-block;
+}

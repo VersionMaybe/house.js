@@ -1,0 +1,19 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+}
+
+.app > * {
+    display: block;
+}

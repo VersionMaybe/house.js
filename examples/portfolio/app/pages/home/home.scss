@@ -1,0 +1,15 @@
+.p-home {
+
+    &__button {
+        height: 3rem;
+        width: 3rem;
+        background-color: red;
+        display: block;
+        margin: 1rem;
+        
+        &:hover {
+            background-color: blue;
+            cursor: pointer;
+        }
+    }
+}
