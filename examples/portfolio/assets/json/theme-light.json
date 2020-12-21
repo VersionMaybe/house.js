@@ -2,6 +2,8 @@
     "name": "Regular - Light",
     "properties": {
         "--background": "255, 255, 255",
-        "--background-contrast": "30, 30, 30"
+        "--background-contrast": "30, 30, 30",
+        "--side-background": "30, 30, 30",
+        "--side-background-contrast": "255, 255, 255"
     }
 }

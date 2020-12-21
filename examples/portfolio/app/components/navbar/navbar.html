@@ -1,3 +1,15 @@
 <div class="c-navbar">
+    <app-hamburger event-click="toggleMenu"></app-hamburger>
+    <span class="c-navbar__text"> $(title) </span>
+</div>
 
+<div class="$(sideState)">
+    <div class="c-sidebar-shade" event-click="toggleMenu"></div>
+    <div class="c-sidebar">
+        <div class="c-sidebar__list">
+            <button event-click="gotoHome"> Home </button>
+            <button event-click="gotoAbout"> About </button>
+            <button> Contact </button>
+        </div>
+    </div>
 </div>

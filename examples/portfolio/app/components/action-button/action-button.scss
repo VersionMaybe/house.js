@@ -1,0 +1,27 @@
+.c-button-wrap {
+    display: inline-block;
+}
+
+.c-button {
+    user-select: none;
+    background-color: rgba(var(--background-contrast), 1);
+    color: rgba(var(--background), 1);
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    outline: none;
+    border: none;
+    box-shadow: 0 0.2rem 0.3rem rgba(0,0,0,0.4);
+    transition: .2s ease;
+
+    &:hover {
+        box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.3);
+        transform: scale(1.05);
+        border-radius: .5rem;
+        cursor: pointer;
+    }
+
+    &__false {
+        pointer-events: none;
+        opacity: .5;
+    }
+}

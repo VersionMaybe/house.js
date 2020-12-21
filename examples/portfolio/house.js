@@ -2,6 +2,7 @@ export const House = (function(settings){
     this.name = '';
     this.version = '';
     this.instance = '';
+    this.settings = {};
 
     this.global = {
         listeners: {},
@@ -14,8 +15,10 @@ export const House = (function(settings){
             return new Promise((res) => {
                 let responses = [];
                 (this.global.listeners[action] || []).forEach((e) => {
-                    const resp = e(...params) || null;
-                    responses.push(resp);
+                    const resp = e(...params);
+                    if (resp !== undefined) {
+                        responses.push(resp);
+                    }
                 })
                 res(responses.length === 0 ? undefined : responses.length === 1 ? responses[0] : responses);
             });
@@ -54,10 +57,15 @@ export const House = (function(settings){
 
     this.navigation = {
         root: document,
+        currentPage: null,
+        transitionSpeed: 0,
         linkedToBrowser: false,
         paths: [],
         go: (path, replaceState) => {
             path = path || '/';
+            if (path === window.location.pathname && !this.navigation.allowSameRouteNavigation && this.navigation.currentPage) {
+                return;
+            }
             if (!this.navigation.root) { error('This house instance is not setup to use navigation.'); }
             const details = this.navigation.exists(path);
             if (!details) { error(`Path ${path} does not exist or has not been setup.`); }
@@ -95,10 +103,11 @@ export const House = (function(settings){
 
     init(this, settings);
     
-    async function init(app, { name, version, components, navigation }) {
+    async function init(app, { name, version, components, navigation, settings = {} }) {
         if (!name || !version) { error('Name & Version required in house settings.'); }
         app.name = name,
         app.version = version;
+        app.settings = settings;
         app.instance = (Math.random() * 1000000).toFixed(0);
         window[`HOUSE_${app.instance}_INSTANCE`] = app;
         // window[`HOUSE_${app.instance}_CUSTOM_ELEMENT_BASES`] = {};
@@ -114,6 +123,8 @@ export const House = (function(settings){
             if (root == null) { error(`Could not find a root container element of id '${navigation.container}'`) }
             app.navigation.root = root;
             app.navigation.linkedToBrowser = navigation.linkedToBrowser || false;
+            app.navigation.transitionSpeed = navigation.transitionSpeed || 0;
+            app.navigation.allowSameRouteNavigation = navigation.allowSameRouteNavigation || false;
 
             if (navigation.linkedToBrowser) {
                 window.onpopstate = () => {
@@ -150,7 +161,25 @@ export const House = (function(settings){
     }
 
     async function loadPage(app, component) {
-       app.navigation.root.innerHTML = `<${component}></${component}>`;
+
+
+        const newPage = document.createElement('span');
+        newPage.classList.add('app-page');
+        newPage.classList.add('page-in');
+        app.navigation.root.appendChild(newPage);
+        newPage.innerHTML = `<${component}></${component}>`;
+
+        if (app.navigation.currentPage) {
+            app.navigation.currentPage.classList.add('page-out');
+        }
+
+        setTimeout(() => {
+            newPage.classList.remove('page-in');
+            if (app.navigation.currentPage) {
+                app.navigation.currentPage.remove();
+            }
+            app.navigation.currentPage = newPage;
+        }, app.navigation.transitionSpeed);
     }
 
     async function loadComponent(app, { name, component }, prefix = 'app') {
@@ -390,13 +419,15 @@ export const House = (function(settings){
                                                         var propNest = attr.value.split('.');
                                                         var propVal = real.props;
                                                         propNest.forEach((x) => {
-                                                            if (!propVal[x]) {
-                                                                error(`Property '${x.slice(2, -1)}' is not available on component '${name}'.`)
+                                                            if (propVal[x] === undefined) {
+                                                                error(`Property '${x}' is not available on component '${name}'.`)
                                                             }
                                                             propVal = propVal[x];
                                                         });
 
-                                                        window[`HOUSE_${app.instance}_CUSTOM_ELEMENT_RUNTIMES`][appElement.ref][attr.value] = propVal;
+                                                        window[`HOUSE_${app.instance}_CUSTOM_ELEMENT_RUNTIMES`][appElement.ref][attr.nodeName.slice(5)] = propVal;
+                                                    } else if (attr.nodeName.startsWith('set-')) {
+                                                        window[`HOUSE_${app.instance}_CUSTOM_ELEMENT_RUNTIMES`][appElement.ref][attr.nodeName.slice(4)] = attr.nodeValue;
                                                     }
                                                 }
                                             }

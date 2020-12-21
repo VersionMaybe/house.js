@@ -1,5 +1,11 @@
 <div class="p-home">
-    Home
-    <span class="p-home__button" event-click="send">Send</span>
-    <span class="p-home__button" event-click="get">Get</span>
+    <app-action-button
+        bind-enabled="allowButton"
+        event-action="gotoAbout"
+        set-label="About">
+    </app-action-button>
+    <app-action-button
+        event-action="toggleButton"
+        set-label="Toggle Button">
+    </app-action-button>
 </div>

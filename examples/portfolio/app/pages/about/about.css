@@ -1,8 +1,8 @@
-.p-home {
+.p-about {
   padding: .5rem;
 }
 
-.p-home__button {
+.p-about__button {
   height: 3rem;
   width: 3rem;
   background-color: red;
@@ -10,8 +10,8 @@
   margin: 1rem;
 }
 
-.p-home__button:hover {
+.p-about__button:hover {
   background-color: blue;
   cursor: pointer;
 }
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=about.css.map */

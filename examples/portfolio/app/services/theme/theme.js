@@ -1,9 +1,7 @@
 (function({ app, instance }) {
 
-    this.themes = [
-        '/assets/json/theme-light.json',
-        '/assets/json/theme-dark.json'
-    ];
+    this.themes = app.settings.theme.themes || [];
+    this.darkModePreference = app.settings.theme.darkModeDefault || null;
 
     app.global.listen('theme.set', (theme) => this.setTheme(theme));
     app.global.listen('theme.add', (theme) => this.loadTheme(theme));
@@ -40,20 +38,18 @@
         return true;
     }
 
-    this.loadInitialThemes = () => {
+    this.loadInitialThemes = async () => {
         for(let theme of this.themes) {
-            app.fetch(theme, null, 'json').then((e) => {
-                if (e.error) {
-                    console.warn('[Theme] Could not load or find theme at: ' + theme);
-                } else {
-                    this.loadTheme(e);
-
-                    if (this.availableThemes.length === 1) {
-                        this.setTheme(e);
-                    }
-                }
-            })
+            const e = await app.fetch(theme, null, 'json');
+            if (e.error) {
+                console.warn('[Theme] Could not load or find theme at: ' + theme);
+            } else {
+                this.loadTheme(e);
+            }
         }
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        this.setTheme( this.availableThemes[ prefersDark ? this.darkModePreference : 0 ] || this.availableThemes[0]);
     }
 
     this.loadInitialThemes();

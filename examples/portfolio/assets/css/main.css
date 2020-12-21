@@ -1,19 +1,108 @@
-html, body {
-    padding: 0;
-    margin: 0;
-}
-
 .app {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgba(var(--background), 1);
-    color: rgba(var(--background-contrast), 1);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(var(--background), 1);
+  color: rgba(var(--background-contrast), 1);
 }
 
-.app > * {
-    display: block;
+.app .app-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(var(--background), 1);
+  color: rgba(var(--background-contrast), 1);
+  -webkit-transition: .25s ease;
+  transition: .25s ease;
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
+
+@-webkit-keyframes slideIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(1.5rem);
+            transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(1.5rem);
+            transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0rem);
+            transform: translateY(0rem);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.app .app-page.page-in {
+  -webkit-animation: slideIn .25s ease backwards;
+          animation: slideIn .25s ease backwards;
+}
+
+@font-face {
+  font-family: "Mark";
+  src: url("/assets/fnt/Mark-Regular.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mark";
+  src: url("/assets/fnt/Mark-Extralight.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Mark";
+  src: url("/assets/fnt/Mark-Bold.ttf");
+  font-weight: 600;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Mark', sans-serif;
+  font-weight: 500;
+  background-color: rgba(var(--background), 1);
+}
+
+* {
+  font-family: 'Mark', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+/*# sourceMappingURL=main.css.map */

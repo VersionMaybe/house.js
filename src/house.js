@@ -2,6 +2,7 @@ export const House = (function(settings){
     this.name = '';
     this.version = '';
     this.instance = '';
+    this.settings = {};
 
     this.global = {
         listeners: {},
@@ -14,8 +15,10 @@ export const House = (function(settings){
             return new Promise((res) => {
                 let responses = [];
                 (this.global.listeners[action] || []).forEach((e) => {
-                    const resp = e(...params) || null;
-                    responses.push(resp);
+                    const resp = e(...params);
+                    if (resp !== undefined) {
+                        responses.push(resp);
+                    }
                 })
                 res(responses.length === 0 ? undefined : responses.length === 1 ? responses[0] : responses);
             });
@@ -54,6 +57,8 @@ export const House = (function(settings){
 
     this.navigation = {
         root: document,
+        currentPage: null,
+        transitionSpeed: 0,
         linkedToBrowser: false,
         paths: [],
         go: (path, replaceState) => {
@@ -75,12 +80,31 @@ export const House = (function(settings){
         }
     }
 
+    this.fetch = (path, settings, returnType = 'raw') => {
+        return new Promise((res) => {
+            fetch(path, settings).then(async (e) => {
+                if (e.ok) {
+                    if (returnType === 'raw') {
+                        res(e);
+                    } else if (returnType === 'text') {
+                        res(await e.text());
+                    } else if (returnType === 'json') {
+                        res(await e.json());
+                    }
+                } else {
+                    res({ error: e.status, message: e.statusText });
+                }
+            });
+        });
+    }
+
     init(this, settings);
     
-    async function init(app, { name, version, components, navigation }) {
+    async function init(app, { name, version, components, navigation, settings = {} }) {
         if (!name || !version) { error('Name & Version required in house settings.'); }
         app.name = name,
         app.version = version;
+        app.settings = settings;
         app.instance = (Math.random() * 1000000).toFixed(0);
         window[`HOUSE_${app.instance}_INSTANCE`] = app;
         // window[`HOUSE_${app.instance}_CUSTOM_ELEMENT_BASES`] = {};
@@ -96,6 +120,7 @@ export const House = (function(settings){
             if (root == null) { error(`Could not find a root container element of id '${navigation.container}'`) }
             app.navigation.root = root;
             app.navigation.linkedToBrowser = navigation.linkedToBrowser || false;
+            app.navigation.transitionSpeed = navigation.transitionSpeed || 0;
 
             if (navigation.linkedToBrowser) {
                 window.onpopstate = () => {
@@ -132,16 +157,34 @@ export const House = (function(settings){
     }
 
     async function loadPage(app, component) {
-       app.navigation.root.innerHTML = `<${component}></${component}>`;
+
+
+        const newPage = document.createElement('span');
+        newPage.classList.add('app-page');
+        newPage.classList.add('page-in');
+        app.navigation.root.appendChild(newPage);
+        newPage.innerHTML = `<${component}></${component}>`;
+
+        if (app.navigation.currentPage) {
+            app.navigation.currentPage.classList.add('page-out');
+        }
+
+        setTimeout(() => {
+            newPage.classList.remove('page-in');
+            if (app.navigation.currentPage) {
+                app.navigation.currentPage.remove();
+            }
+            app.navigation.currentPage = newPage;
+        }, app.navigation.transitionSpeed);
     }
 
     async function loadComponent(app, { name, component }, prefix = 'app') {
         if (!customElements.get(`${prefix}-${name}`)) {
             var dirName = component.split('/')[component.split('/').length - 1];
 
-            const componentHTML = await fetchFile(component + `/${ dirName }.html`);
-            const componentJS = await fetchFile(component + `/${ dirName }.js`);
-            const componentCSS = await fetchFile(component + `/${ dirName }.css`);
+            const componentHTML = await app.fetch(component + `/${ dirName }.html`, null, 'text');
+            const componentJS = await app.fetch(component + `/${ dirName }.js`, null, 'text');
+            const componentCSS = await app.fetch(component + `/${ dirName }.css`, null, 'text');
     
             const template = componentHTML.error ? '' : componentHTML;
             const templateJS = componentJS.error ? '' : componentJS;
@@ -397,7 +440,12 @@ export const House = (function(settings){
 // ### YOUR COMPONENT LOGIC ###
 ${val}
 // ### END OF YOUR COMPONENT LOGIC ###
-this.component = new ${ this.safename }(window['HOUSE_${app.instance}_CUSTOM_ELEMENTS']['${ this.ref }'].content, window['HOUSE_${app.instance}_INSTANCE']);
+var args = {
+    content: window['HOUSE_${app.instance}_CUSTOM_ELEMENTS']['${ this.ref }'].content,
+    app: window['HOUSE_${app.instance}_INSTANCE'],
+    instance: window['HOUSE_${app.instance}_CUSTOM_ELEMENTS']['${ this.ref }']
+};
+this.component = new ${ this.safename }(args);
 window['HOUSE_${app.instance}_CUSTOM_ELEMENT_RUNTIMES']['${ this.ref }'] = this.component; })()`;
                     this.meta.appendChild(script);
                 }
@@ -409,18 +457,6 @@ window['HOUSE_${app.instance}_CUSTOM_ELEMENT_RUNTIMES']['${ this.ref }'] = this.
                 }
             }
         );
-    }
-
-    async function fetchFile(path, settings) {
-        return new Promise((res) => {
-            fetch(path, settings).then(async (e) => {
-                if (e.ok) {
-                    res(await e.text());
-                } else {
-                    res({ error: e.status, message: e.statusText });
-                }
-            });
-        });
     }
 
     function print(msg) {
