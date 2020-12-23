@@ -1,0 +1,37 @@
+.c-button-wrap {
+    display: inline-block;
+}
+
+.c-button {
+    user-select: none;
+    background-color: rgba(var(--primary), 1);
+    color: rgba(var(--primary-contrast), 1);
+    padding: .5rem 1rem;
+    border-radius: .4rem;
+    outline: none;
+    border: none;
+    box-shadow: 0 0.2rem 0.3rem rgba(var(--primary),0.4);
+    transition: .2s ease;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+        box-shadow: 0 0.2rem 0.5rem rgba(var(--primary),0.3);
+        transform: scale(1.05);
+        border-radius: .5rem;
+        cursor: pointer;
+    }
+
+    &:active {
+        box-shadow: 0 0.2rem 0.3rem rgba(var(--primary),0.4);
+        transform: scale(1);
+        border-radius: .4rem;
+        cursor: pointer;
+    }
+
+    &__false {
+        pointer-events: none;
+        opacity: .5;
+    }
+}

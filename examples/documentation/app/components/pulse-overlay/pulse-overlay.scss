@@ -1,0 +1,42 @@
+app-pulse-overlay {
+    user-select: none;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%)  scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+.c-pulse-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: .3;
+
+    &__inner {
+        position: absolute;
+        height: 15rem;
+        width: 15rem;
+        border-radius: 50%;
+        background-color: rgba(var(--background), 1);
+        // mix-blend-mode: soft-light;
+        animation: pulse backwards 1s ease;
+        opacity: 0;
+        transform-origin: 50% 50%;
+        transform: translate(-50%, -50%)  scale(0);
+        pointer-events: none;
+    }
+}

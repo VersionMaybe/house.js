@@ -1,0 +1,69 @@
+app-pulse-overlay {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+            transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+            transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.c-pulse-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: .3;
+}
+
+.c-pulse-overlay__inner {
+  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  background-color: rgba(var(--background), 1);
+  -webkit-animation: pulse backwards 1s ease;
+          animation: pulse backwards 1s ease;
+  opacity: 0;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+/*# sourceMappingURL=pulse-overlay.css.map */

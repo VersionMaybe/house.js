@@ -1,0 +1,15 @@
+{
+    "name": "Regular - Light",
+    "properties": {
+        "--background": "30, 30, 30",
+        "--background-contrast": "255, 255, 255",
+        "--navbar": "30, 30, 30",
+        "--navbar-transparency": ".8",
+        "--navbar-shadow": "0, 0, 0",
+        "--navbar-contrast": "255, 255, 255",
+        "--side-background": "30, 30, 30",
+        "--side-background-contrast": "255, 255, 255",
+        "--primary": "129, 66, 245",
+        "--primary-contrast": "255, 255, 255"
+    }
+}

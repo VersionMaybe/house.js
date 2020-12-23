@@ -1,0 +1,62 @@
+.c-burger {
+  height: 1.2rem;
+  width: 1.45rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.c-burger:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.c-burger.open span:first-child {
+  -webkit-transform: rotateZ(45deg) translateX(0px);
+          transform: rotateZ(45deg) translateX(0px);
+}
+
+.c-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.c-burger.open span:last-child {
+  -webkit-transform: rotateZ(-45deg) translateX(0px);
+          transform: rotateZ(-45deg) translateX(0px);
+}
+
+.c-burger span {
+  height: 2px;
+  width: 100%;
+  display: block;
+  background-color: rgba(var(--navbar-contrast), 1);
+  position: absolute;
+  -webkit-transform: rotateZ(0deg) translateX(0px);
+          transform: rotateZ(0deg) translateX(0px);
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+.c-burger span:first-child {
+  top: 0;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+}
+
+.c-burger span:last-child {
+  bottom: 0;
+  -webkit-transform-origin: 0 0%;
+          transform-origin: 0 0%;
+}
+/*# sourceMappingURL=hamburger.css.map */

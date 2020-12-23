@@ -64,7 +64,7 @@ export const House = (function(settings){
         paths: [],
         go: (path, replaceState) => {
             path = path || '/';
-            if (path === window.location.pathname && !this.navigation.allowSameRouteNavigation && this.navigation.currentPage) {
+            if (path === window.location.pathname && !this.navigation.allowSameRouteNavigation && this.navigation.currentPage && !replaceState) {
                 return;
             }
             if (!this.navigation.root) { error('This house instance is not setup to use navigation.'); }
@@ -163,8 +163,6 @@ export const House = (function(settings){
     }
 
     async function loadPage(app, component) {
-
-
         const newPage = document.createElement('span');
         newPage.classList.add('app-page');
         newPage.classList.add('page-in');

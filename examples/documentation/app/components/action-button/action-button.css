@@ -1,0 +1,47 @@
+.c-button-wrap {
+  display: inline-block;
+}
+
+.c-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: rgba(var(--primary), 1);
+  color: rgba(var(--primary-contrast), 1);
+  padding: .5rem 1rem;
+  border-radius: .4rem;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: 0 0.2rem 0.3rem rgba(var(--primary), 0.4);
+          box-shadow: 0 0.2rem 0.3rem rgba(var(--primary), 0.4);
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.c-button:hover {
+  -webkit-box-shadow: 0 0.2rem 0.5rem rgba(var(--primary), 0.3);
+          box-shadow: 0 0.2rem 0.5rem rgba(var(--primary), 0.3);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.c-button:active {
+  -webkit-box-shadow: 0 0.2rem 0.3rem rgba(var(--primary), 0.4);
+          box-shadow: 0 0.2rem 0.3rem rgba(var(--primary), 0.4);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  border-radius: .4rem;
+  cursor: pointer;
+}
+
+.c-button__false {
+  pointer-events: none;
+  opacity: .5;
+}
+/*# sourceMappingURL=action-button.css.map */

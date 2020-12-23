@@ -1,0 +1,145 @@
+@import '../../../assets/css/scss/responsive';
+
+.c-navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: .5rem .75rem;
+    height: 60px;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: rgba(var(--navbar), var(--navbar-transparency));
+    backdrop-filter: blur(.1rem);
+    border-bottom: 1px solid rgba(var(--navbar), .3);
+    box-shadow: 0 0rem 0.5rem rgba(var(--navbar-shadow),.2);
+    user-select: none;
+    align-items: center;
+    display: flex;
+
+    &__text {
+        color: rgba(var(--navbar-contrast), 1);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        height: 1rem;
+        white-space: nowrap;
+
+        img {
+            height: 2rem;
+            margin-right: .5rem;
+        }
+    }
+
+    app-hamburger {
+        position: relative;
+        padding: .5rem;
+        display: inline-block;
+
+        @include desktop {
+            pointer-events: none;
+            display: none;
+        }
+    }
+}
+
+.c-sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    width: 90%;
+    max-width: 200px;
+    z-index: 90;
+    background-color: rgba(var(--side-background), .8);
+    backdrop-filter: blur(.1rem);
+    border-right: 1px solid rgba(var(--side-background), .2);
+    user-select: none;
+    transition: .4s ease;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+
+    .open & {
+        transform: translateX(0%);
+        box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
+    }
+
+    @include desktop {
+        transform: translateX(0%);
+        box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        &__group {
+            display: flex;
+            flex-direction: column;
+
+            > span {
+                background-color: rgba(var(--side-background-contrast), .1);
+                color: rgba(var(--side-background-contrast), .6);
+                text-align: center;
+                padding: .3rem;
+                font-size: .6rem;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+    
+            > button {
+                background-color: transparent;
+                color: rgba(var(--side-background-contrast), 1);
+                border: none;
+                border-bottom: 1px solid rgba(var(--side-background-contrast), .1);
+                padding: 1rem 1.2rem;
+                backdrop-filter: blur(.1rem);
+                transition: .2s ease;
+                outline: none;
+                margin: 0;
+                position: relative;
+    
+                &.active {
+                    background-color: rgba(var(--primary), .8);
+                    color: rgba(var(--primary-contrast), 1);
+                }
+    
+                &:hover {
+                    background-color: rgba(var(--primary), 1);
+                    color: rgba(var(--primary-contrast), 1);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.c-sidebar-shade {
+    position: fixed;
+    z-index: 80;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    opacity: 0;
+    transition: .4s ease;
+    pointer-events: none;
+
+    .open & {
+        pointer-events: all;
+        opacity: .5;
+    }
+
+    @include desktop {
+        pointer-events: none;
+        display: none;
+    }
+}

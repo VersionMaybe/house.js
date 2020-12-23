@@ -1,0 +1,57 @@
+@import './responsive';
+
+.app {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+}
+
+.app .app-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+    transition: .25s ease;
+    opacity: 1;
+    transform: translateX(0);
+
+    @include desktop {
+        left: 200px;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.app .app-page.page-in {
+    animation: slideIn .25s ease backwards;
+}
+
+.app .app-page.page-out {
+}
