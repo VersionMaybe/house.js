@@ -1,7 +1,3 @@
-(function({ app }) {
-
-    this.gotoHome = () => {
-        app.navigation.go('/');
-    }
-
-});
+this.gotoHome = () => {
+    app.navigation.go('/');
+}

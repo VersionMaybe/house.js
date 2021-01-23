@@ -1,3 +1,5 @@
+$animation-transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+
 .c-burger {
     height: 1.2rem;
     width: 1.45rem;
@@ -33,7 +35,7 @@
         background-color: rgba(var(--navbar-contrast), 1);
         position: absolute;
         transform: rotateZ(0deg) translateX(0px);;
-        transition: .2s ease;
+        transition: $animation-transition;
 
         &:first-child {
             top: 0;

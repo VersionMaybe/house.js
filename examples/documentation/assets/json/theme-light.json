@@ -1,15 +1,16 @@
 {
     "name": "Regular - Light",
+    "titlebar": "#743bde",
     "properties": {
-        "--background": "255, 255, 255",
-        "--background-contrast": "30, 30, 30",
-        "--navbar": "255, 255, 255",
-        "--navbar-transparency": ".8",
-        "--navbar-shadow": "0, 0, 0",
-        "--navbar-contrast": "30, 30, 30",
-        "--side-background": "255, 255, 255",
-        "--side-background-contrast": "30, 30, 30",
-        "--primary": "129, 66, 245",
-        "--primary-contrast": "255, 255, 255"
+        "background": "255, 255, 255",
+        "background-contrast": "30, 30, 30",
+        "navbar": "255, 255, 255",
+        "navbar-transparency": ".9",
+        "navbar-shadow": "0, 0, 0",
+        "navbar-contrast": "30, 30, 30",
+        "side-background": "255, 255, 255",
+        "side-background-contrast": "30, 30, 30",
+        "primary": "129, 66, 245",
+        "primary-contrast": "255, 255, 255"
     }
 }

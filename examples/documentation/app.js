@@ -1,21 +1,23 @@
-import { House } from './house.js';
+import { Boxed } from './boxed.js';
 
-var app = new House({
-    name: 'The House Framework',
-    version: '1.0.0',
-    components: [
+var app = new Boxed({
+    services: [
         { name: 'store', component: '/app/services/store' },
         { name: 'theme', component: '/app/services/theme' },
-
-        { name: 'pulse-overlay', component: '/app/components/pulse-overlay' },
-        { name: 'navbar', component: '/app/components/navbar' },
-        { name: 'hamburger', component: '/app/components/hamburger' },
-        { name: 'action-button', component: '/app/components/action-button' },
+    ],
+    components: [
+        // Generic Components
+        { name: 'pulse-overlay', component: '/app/components/generic/pulse-overlay' },
+        { name: 'action-button', component: '/app/components/generic/action-button' },
+        // Navigation Components
+        { name: 'navbar', component: '/app/components/navigation/navbar' },
+        { name: 'hamburger', component: '/app/components/navigation/hamburger' },
     ],
     navigation: {
         container: 'house',
         transitionSpeed: 500,
         linkedToBrowser: true,
+        fallback: '/app/pages/error',
         pages: [
             { path: '/', component: '/app/pages/home' },
             { path: '/about', component: '/app/pages/about' },
@@ -29,5 +31,7 @@ var app = new House({
             ],
             darkModeDefault: 1
         }
-    }
+    },
 });
+
+console.log(app);

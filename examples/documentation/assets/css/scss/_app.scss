@@ -1,31 +1,47 @@
 @import './responsive';
 
-.app {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: rgba(var(--background), 1);
-    color: rgba(var(--background-contrast), 1);
-}
-
-.app .app-page {
+body {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    flex-direction: column;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+}
+
+.app {
+    overflow: hidden;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+
+    @include desktop {
+        left: 200px;
+    }
+}
+
+.app .app-page {
     background-color: rgba(var(--background), 1);
     color: rgba(var(--background-contrast), 1);
     transition: .25s ease;
     opacity: 1;
     transform: translateX(0);
-
-    @include desktop {
-        left: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    
+    >* {
+        display: block;
+        height: 100%;
     }
 }
 
@@ -50,7 +66,11 @@
 }
 
 .app .app-page.page-in {
-    animation: slideIn .25s ease backwards;
+    animation: fadeIn .25s ease;
+    
+    >* {
+        animation: slideIn .25s ease backwards;
+    }
 }
 
 .app .app-page.page-out {

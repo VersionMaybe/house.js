@@ -20,6 +20,7 @@
   margin: 0;
   overflow: hidden;
   position: relative;
+  font-size: 1rem;
 }
 
 .c-button:hover {
@@ -44,4 +45,3 @@
   pointer-events: none;
   opacity: .5;
 }
-/*# sourceMappingURL=action-button.css.map */

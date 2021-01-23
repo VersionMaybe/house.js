@@ -44,8 +44,8 @@
   position: absolute;
   -webkit-transform: rotateZ(0deg) translateX(0px);
           transform: rotateZ(0deg) translateX(0px);
-  -webkit-transition: .2s ease;
-  transition: .2s ease;
+  -webkit-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .c-burger span:first-child {
@@ -59,4 +59,3 @@
   -webkit-transform-origin: 0 0%;
           transform-origin: 0 0%;
 }
-/*# sourceMappingURL=hamburger.css.map */

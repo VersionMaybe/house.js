@@ -1,21 +1,35 @@
-.app {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-color: rgba(var(--background), 1);
-  color: rgba(var(--background-contrast), 1);
-}
-
-.app .app-page {
+body {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(var(--background), 1);
+  color: rgba(var(--background-contrast), 1);
+}
+
+.app {
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(var(--background), 1);
+  color: rgba(var(--background-contrast), 1);
+}
+
+@media screen and (min-width: 1100px) {
+  .app {
+    left: 200px;
+  }
+}
+
+.app .app-page {
   background-color: rgba(var(--background), 1);
   color: rgba(var(--background-contrast), 1);
   -webkit-transition: .25s ease;
@@ -23,12 +37,17 @@
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
 }
 
-@media screen and (min-width: 1200px) {
-  .app .app-page {
-    left: 200px;
-  }
+.app .app-page > * {
+  display: block;
+  height: 100%;
 }
 
 @-webkit-keyframes slideIn {
@@ -76,6 +95,12 @@
 }
 
 .app .app-page.page-in {
+  -webkit-animation: fadeIn .25s ease;
+          animation: fadeIn .25s ease;
+  z-index: 10;
+}
+
+.app .app-page.page-in > * {
   -webkit-animation: slideIn .25s ease backwards;
           animation: slideIn .25s ease backwards;
 }
@@ -111,4 +136,3 @@ html, body {
   font-weight: 500;
   font-size: 1rem;
 }
-/*# sourceMappingURL=main.css.map */
