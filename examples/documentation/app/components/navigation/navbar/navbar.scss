@@ -3,9 +3,6 @@
 $animation-transition: .5s cubic-bezier(0.4, 0.0, 0.2, 1);
 
 .c-navbar {
-    // position: fixed;
-    // left: 0;
-    // top: 0;
     width: 100%;
     padding: .5rem .75rem;
     height: 60px;
@@ -13,11 +10,11 @@ $animation-transition: .5s cubic-bezier(0.4, 0.0, 0.2, 1);
     z-index: 100;
     background-color: rgba(var(--navbar), var(--navbar-transparency));
     backdrop-filter: blur(.1rem);
-    border-bottom: 1px solid rgba(var(--navbar), .3);
-    box-shadow: 0 0rem 0.5rem rgba(var(--navbar-shadow),.2);
+    border-bottom: 1px solid rgba(var(--navbar-contrast), .1);
     user-select: none;
     align-items: center;
     display: flex;
+    position: relative;
 
     &__text {
         color: rgba(var(--navbar-contrast), 1);

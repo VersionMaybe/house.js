@@ -8,11 +8,11 @@ this.groups = [
         label: 'General',
         items: [
             { label: 'Home', path: '/' },
-            { label: 'The Basics', path: '/about' }
+            { label: 'Quickstart', path: '/about' }
         ]
     },
     {
-        label: 'Instructions',
+        label: 'Documentation',
         items: [
             { label: 'Components', path: '/help/components' },
             { label: 'Data Binding', path: '/help/data-binding' },

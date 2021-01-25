@@ -11,6 +11,8 @@
         "side-background": "30, 30, 30",
         "side-background-contrast": "255, 255, 255",
         "primary": "129, 66, 245",
-        "primary-contrast": "255, 255, 255"
+        "primary-contrast": "255, 255, 255",
+        "toast": "255, 255, 255",
+        "toast-contrast": "30, 30, 30"
     }
 }

@@ -1,0 +1,7 @@
+<span class="c-toast" condition-for="this.toasts">
+    <span class="c-toast__title" condition-if="$value && $value.title">
+        {{ $value ? $value.title : '' }}
+    </span>
+
+    {{ $value ? $value.message : '' }}
+</span>

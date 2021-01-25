@@ -1,0 +1,21 @@
+<div class="c-page-code {{ !this.filename && !this.lang ? 'no-header' : '' }} {{ this.inline ? 'inline' : '' }}">
+    <div class="c-page-code__header" condition-if="this.filename || this.lang">
+        <span class="c-page-code__header__file" condition-if="this.filename">{{ this.filename }}</span>
+        <span class="c-page-code__header__lang" condition-if="this.lang">Type: {{ this.lang }}</span>
+    </div>
+    <code class="c-page-code__body">
+        <span id="code-block">
+            {{ this.code }}
+        </span>
+
+        <span class="c-page-code__actions">
+            <button event-click="this.onCopy()">Copy</button>
+            <button condition-if="this.allowDownload && this.filename" event-click="this.onDownload()">Download</button>
+        </span>
+    </code>
+
+    <!-- <span class="c-page-code__actions">
+        <button condition-if="this.allowCopy" event-click="this.onCopy()">Copy</button>
+        <button condition-if="this.allowDownload && this.filename" event-click="this.onDownload()">Download</button>
+    </span> -->
+</div>

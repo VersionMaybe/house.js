@@ -1,0 +1,17 @@
+.c-page-quote {
+  padding: .75rem .6rem;
+  font-size: 1rem;
+  border-left: 0.2rem solid rgba(var(--primary), 1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.c-page-quote__name {
+  opacity: .6;
+  margin-top: .25rem;
+}

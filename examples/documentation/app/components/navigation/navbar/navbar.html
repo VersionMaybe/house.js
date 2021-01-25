@@ -20,7 +20,7 @@
                 <span>{{ $value.label }}</span>
                 <button condition-for="$value.items" event-click="this.gotoPage($value)" class="{{ $value.path  == this.location.pathname ? 'active' : '' }}">
                     {{ $value.label }}
-                    <app-pulse-overlay bind-mode="'hover'"></app-pulse-overlay>
+                    <app-pulse-overlay set-mode="'hover'"></app-pulse-overlay>
                 </button>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="c-sidebar__list__group">
                 <span>Developed By</span>
                 <button event-click="open('https://www.haydncomley.com')">
-                    <app-pulse-overlay bind-mode="'hover'"></app-pulse-overlay>
+                    <app-pulse-overlay set-mode="'hover'"></app-pulse-overlay>
                     Haydn Comley
                 </button>
             </div>

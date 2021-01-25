@@ -8,9 +8,7 @@
   background-color: rgba(var(--navbar), var(--navbar-transparency));
   -webkit-backdrop-filter: blur(0.1rem);
           backdrop-filter: blur(0.1rem);
-  border-bottom: 1px solid rgba(var(--navbar), 0.3);
-  -webkit-box-shadow: 0 0rem 0.5rem rgba(var(--navbar-shadow), 0.2);
-          box-shadow: 0 0rem 0.5rem rgba(var(--navbar-shadow), 0.2);
+  border-bottom: 1px solid rgba(var(--navbar-contrast), 0.1);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -21,6 +19,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 .c-navbar__text {

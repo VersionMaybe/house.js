@@ -272,8 +272,8 @@ export const Boxed = (function(options){
                     for (let i = 0; i < this.attributes.length; i++) {
                         const element = this.attributes[i];
                         
-                        if (element.nodeName.startsWith('bind-')) {
-                            const prop = element.nodeName.slice(5);
+                        if (element.nodeName.startsWith('set-')) {
+                            const prop = element.nodeName.slice(4);
                             const newProp = this.boxedTranslateLogic(element.ownerElement, element.nodeValue.trim(), {});
                         
                             if (element.ownerElement[prop] != newProp) {
@@ -460,8 +460,8 @@ class HTMLBoxedElement extends HTMLElement {
                         });
                         attribute.eventExists = true;
                     }
-                } else if (attribute.nodeName.startsWith('bind-')) {
-                    const prop = attribute.nodeName.slice(5);
+                } else if (attribute.nodeName.startsWith('set-')) {
+                    const prop = attribute.nodeName.slice(4);
                     const newProp = this.boxedTranslateLogic(attribute.ownerElement, attribute.nodeValue.trim(), {});
                 
                     if (attribute.ownerElement[prop] != newProp) {
@@ -469,7 +469,7 @@ class HTMLBoxedElement extends HTMLElement {
                     }
                 } else if (attribute.nodeName.startsWith('condition-')) {
                     if (attribute.nodeName.endsWith('-if')) {
-                        attribute.ownerElement.style.display = !!this.boxedTranslateLogic(attribute.ownerElement, attribute.nodeValue.trim()) ? '' : 'none';
+                        attribute.ownerElement.style.display = !!this.boxedTranslateLogic(attribute.ownerElement, attribute.nodeValue.trim(), {}) ? '' : 'none';
                     } else if (attribute.nodeName.endsWith('-count')) {
                         const count = parseInt(this.boxedTranslateLogic(attribute.ownerElement.parentElement, attribute.nodeValue.trim(), {}));
                         

@@ -1,0 +1,51 @@
+@import '../../../../assets/css/scss/responsive';
+
+.c-toast {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: rgba(var(--toast), 1);
+    color: rgba(var(--toast-contrast), 1);
+    padding: .5rem .75rem;
+    border-radius: .25rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    animation: toastIn .4s cubic-bezier(0.4, 0.0, 0.2, 1) backwards;
+    max-width: 20rem;
+
+    @include mobile {
+        max-width: none;
+        left: 1rem;
+        right: 1rem;
+        transform: translate(0%, 0%);
+        animation: toastInMobile .4s cubic-bezier(0.4, 0.0, 0.2, 1) backwards;
+        padding: .8rem 1rem;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: .8rem;
+        opacity: .75;
+    }
+}
+
+@keyframes toastIn {
+    from {
+        transform: translate(-50%, 150%);
+    }
+    to {
+        transform: translate(-50%, 0%);
+    }
+}
+
+@keyframes toastInMobile {
+    from {
+        transform: translate(0%, 150%);
+    }
+    to {
+        transform: translate(0%, 0%);
+    }
+}

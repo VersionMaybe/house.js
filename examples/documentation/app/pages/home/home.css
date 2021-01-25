@@ -1,1 +1,8 @@
-/* No CSS */
+.p-home {
+  padding: 0.75rem 1rem;
+}
+
+.p-home > * {
+  margin-bottom: .5rem;
+  display: block;
+}

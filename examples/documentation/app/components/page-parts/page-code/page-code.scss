@@ -1,0 +1,108 @@
+@import '../../../../assets/css/scss/responsive';
+
+.c-page-code {
+    border-radius: .5rem;
+    background-color: rgba(var(--background), 1);
+    color: rgba(var(--background-contrast), 1);
+    font-size: 1rem;
+    position: relative;
+
+    &.inline {
+        display: inline-block;
+        margin-bottom: 2.5rem;
+    }
+
+    @include mobile {
+        margin-bottom: 2.5rem;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        padding: .4rem .75rem;
+        background-color: rgba(var(--primary), 1);
+        color: rgba(var(--primary-contrast), 1);
+        border-radius: .4rem .4rem 0 0;
+
+        &__file {
+        }
+
+        &__lang {
+            margin-left: auto;
+        }
+    }
+
+    &__body {
+        font-size: 1rem;
+        padding: .75rem;
+        display: block;
+        border-radius: 0 0 .4rem .4rem;
+        background-color: rgba(var(--background-contrast), 1);
+        color: rgba(var(--background), 1);
+        border-top: none;
+        font-family: monospace;
+        display: flex;
+        flex-direction: column;
+
+        .inline & {
+            display: inline-block;
+            padding: .5rem .75rem;
+        }
+
+        .no-header & {
+            border-radius: .4rem;
+        }
+
+        @include mobile {
+            padding: .5rem .75rem;
+        }
+    }
+
+    &__actions {
+        bottom: .4rem;
+        right: .4rem;
+        position: absolute;
+
+        @include mobile {
+            position: absolute;
+            right: 0;
+            top: calc(100% + .4rem);
+        }
+
+        .inline & {
+            position: absolute;
+            right: 0;
+            top: calc(100% + .4rem);
+        }
+
+        >button {
+            background-color: transparent;
+            border: 2px solid rgba(var(--background), .5);
+            color: rgba(var(--background), 1);
+            border-radius: .25rem;
+            font-weight: 500;
+            font-family: 'Mark';
+            margin: 0;
+            padding: .2rem .5rem .25rem;
+            opacity: .6;
+            transition: .2s ease;
+
+            @include mobile {
+                border: 2px solid rgba(var(--background-contrast), .5);
+                color: rgba(var(--background-contrast), 1);
+            }
+
+            .inline & {
+                border: 2px solid rgba(var(--background-contrast), .5);
+                color: rgba(var(--background-contrast), 1);
+            }
+
+            &:hover, &:focus {
+                opacity: 1;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+    }
+}

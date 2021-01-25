@@ -1,0 +1,89 @@
+.c-toast {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  background-color: rgba(var(--toast), 1);
+  color: rgba(var(--toast-contrast), 1);
+  padding: .5rem .75rem;
+  border-radius: .25rem;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+          animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  max-width: 20rem;
+}
+
+@media screen and (max-width: 600px) {
+  .c-toast {
+    max-width: none;
+    left: 1rem;
+    right: 1rem;
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    -webkit-animation: toastInMobile 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+            animation: toastInMobile 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+    padding: .8rem 1rem;
+  }
+}
+
+.c-toast__title {
+  font-weight: 600;
+  font-size: .8rem;
+  opacity: .75;
+}
+
+@-webkit-keyframes toastIn {
+  from {
+    -webkit-transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%);
+  }
+  to {
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    -webkit-transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%);
+  }
+  to {
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+  }
+}
+
+@-webkit-keyframes toastInMobile {
+  from {
+    -webkit-transform: translate(0%, 150%);
+            transform: translate(0%, 150%);
+  }
+  to {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
+
+@keyframes toastInMobile {
+  from {
+    -webkit-transform: translate(0%, 150%);
+            transform: translate(0%, 150%);
+  }
+  to {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
