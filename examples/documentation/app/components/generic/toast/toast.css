@@ -20,9 +20,9 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-          animation: toastIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
   max-width: 20rem;
+  -webkit-animation: toastAnim 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          animation: toastAnim 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @media screen and (max-width: 600px) {
@@ -32,9 +32,9 @@
     right: 1rem;
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
-    -webkit-animation: toastInMobile 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-            animation: toastInMobile 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
     padding: .8rem 1rem;
+    -webkit-animation: toastMobileAnim 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: toastMobileAnim 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 }
 
@@ -44,46 +44,78 @@
   opacity: .75;
 }
 
-@-webkit-keyframes toastIn {
-  from {
+@-webkit-keyframes toastAnim {
+  0% {
     -webkit-transform: translate(-50%, 150%);
             transform: translate(-50%, 150%);
   }
-  to {
+  20% {
     -webkit-transform: translate(-50%, 0%);
             transform: translate(-50%, 0%);
   }
-}
-
-@keyframes toastIn {
-  from {
+  80% {
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+  }
+  100% {
     -webkit-transform: translate(-50%, 150%);
             transform: translate(-50%, 150%);
   }
-  to {
+}
+
+@keyframes toastAnim {
+  0% {
+    -webkit-transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%);
+  }
+  20% {
     -webkit-transform: translate(-50%, 0%);
             transform: translate(-50%, 0%);
   }
-}
-
-@-webkit-keyframes toastInMobile {
-  from {
-    -webkit-transform: translate(0%, 150%);
-            transform: translate(0%, 150%);
+  80% {
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
-  to {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+  100% {
+    -webkit-transform: translate(-50%, 150%);
+            transform: translate(-50%, 150%);
   }
 }
 
-@keyframes toastInMobile {
-  from {
+@-webkit-keyframes toastMobileAnim {
+  0% {
     -webkit-transform: translate(0%, 150%);
             transform: translate(0%, 150%);
   }
-  to {
+  20% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+  }
+  80% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 150%);
+            transform: translate(0%, 150%);
+  }
+}
+
+@keyframes toastMobileAnim {
+  0% {
+    -webkit-transform: translate(0%, 150%);
+            transform: translate(0%, 150%);
+  }
+  20% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+  80% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 150%);
+            transform: translate(0%, 150%);
   }
 }

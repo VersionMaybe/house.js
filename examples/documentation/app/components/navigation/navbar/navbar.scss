@@ -81,33 +81,54 @@ $animation-transition: .5s cubic-bezier(0.4, 0.0, 0.2, 1);
     flex-direction: column;
     justify-content: space-between;
     overflow: auto;
+    border-right: 1px solid rgba(var(--navbar-contrast), .1);
 
     .open & {
         transform: translateX(0%);
-        box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
+        // box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
     }
 
     @include desktop {
         transform: translateX(0%);
-        box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
+        // box-shadow: 0 0rem 0.5rem rgba(0,0,0,.2);
     }
 
     &__list {
         display: flex;
         flex-direction: column;
+        position: relative;
+        
+        &:first-child {
+            flex: 1;
+            overflow: auto;
+        }
 
         &__group {
             display: flex;
             flex-direction: column;
 
             > span {
-                background-color: rgba(var(--side-background-contrast), .1);
+                background-color: rgba(var(--side-background), 1);
                 color: rgba(var(--side-background-contrast), .6);
                 text-align: center;
                 padding: .3rem;
                 font-size: .6rem;
                 text-transform: uppercase;
                 font-weight: bold;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    pointer-events: none;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(var(--side-background-contrast), .2);
+                }
             }
     
             > button {

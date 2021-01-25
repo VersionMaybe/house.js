@@ -3,7 +3,7 @@ this.code = '';
 this.lang = '';
 
 this.inline = false;
-this.allowDownload = false;
+this.download = false;
 
 this.onCopy = () => {
     console.log('Copy Code');
@@ -25,7 +25,7 @@ this.onCopy = () => {
 
 this.onDownload = () => {
     app.global.echo('toast.create', {
-        message: "Downloading code..."
+        message: "Downloading as file..."
     });
 
     app.global.echo('file.downloadText', {

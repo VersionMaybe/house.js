@@ -8,12 +8,12 @@
 
 .c-page-code.inline {
   display: inline-block;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.25rem;
 }
 
 @media screen and (max-width: 600px) {
   .c-page-code {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.25rem;
   }
 }
 
@@ -84,7 +84,7 @@
 
 .inline .c-page-code__actions {
   position: absolute;
-  right: 0;
+  left: 0;
   top: calc(100% + .4rem);
 }
 

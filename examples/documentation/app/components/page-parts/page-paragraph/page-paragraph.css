@@ -1,11 +1,4 @@
 .c-page-paragraph {
   font-weight: 500;
   font-size: 1rem;
-  padding: 0 .8rem;
-}
-
-@media screen and (max-width: 600px) {
-  .c-page-paragraph {
-    padding: .25rem 0;
-  }
 }
